@@ -8,8 +8,8 @@ const Grid = props => {
     } 
 
     const col = props.col ? `grid-col-${props.col}` : ''
-    const mdCol = props.col ? `grid-col-${props.mdCol}` : ''
-    const smCol = props.col ? `grid-col-${props.smCol}` : ''
+    const mdCol = props.col ? `grid-col-md-${props.mdCol}` : ''
+    const smCol = props.col ? `grid-col-sm-${props.smCol}` : ''
 
   return (
     <div className={`grid ${col} ${mdCol} ${smCol}`} style={style}>
