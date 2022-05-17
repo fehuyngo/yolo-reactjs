@@ -5,11 +5,15 @@ const Helmet = props => {
 
     document.title = 'Yolo - ' + props.title
 
-  return (
-    <div>
-      {props.children}
-    </div>
-  )
+    React.useEffect(() => {
+        window.scrollTo(0,0)
+    }, [])
+
+    return (
+        <div>
+            {props.children}
+        </div>
+    )
 }
 
 Helmet.propTypes = {
