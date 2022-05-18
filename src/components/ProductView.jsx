@@ -3,17 +3,17 @@ import PropTypes from 'prop-types'
 
 import { withRouter } from 'react-router'
 
-// import { useDispatch } from 'react-redux'
+import { useDispatch } from 'react-redux'
 
-// import { addItem } from '../redux/shopping-cart/cartItemsSlide'
-// import { remove } from '../redux/product-modal/productModalSlice'
+import { addItem } from '../redux/shopping-cart/cartItemsSlide'
+import { remove } from '../redux/product-modal/productModalSlice'
 
 import Button from './Button'
 import numberWithCommas from '../utils/numberWithCommas'
 
 const ProductView = props => {
 
-    // const dispatch = useDispatch()
+    const dispatch = useDispatch()
 
     let product = props.product
 
@@ -68,40 +68,40 @@ const ProductView = props => {
         return true
     }
 
-    // const addToCart = () => {
-    //     if (check()) {
-    //         let newItem = {
-    //             slug: product.slug,
-    //             color: color,
-    //             size: size,
-    //             price: product.price,
-    //             quantity: quantity
-    //         }
-    //         if (dispatch(addItem(newItem))) {
-    //             alert('Success')
-    //         } else {
-    //             alert('Fail')
-    //         }
-    //     }
-    // }
+    const addToCart = () => {
+        if (check()) {
+            let newItem = {
+                slug: product.slug,
+                color: color,
+                size: size,
+                price: product.price,
+                quantity: quantity
+            }
+            if (dispatch(addItem(newItem))) {
+                alert('Success')
+            } else {
+                alert('Fail')
+            }
+        }
+    }
 
-    // const goToCart = () => {
-    //     if (check()) {
-    //         let newItem = {
-    //             slug: product.slug,
-    //             color: color,
-    //             size: size,
-    //             price: product.price,
-    //             quantity: quantity
-    //         }
-    //         if (dispatch(addItem(newItem))) {
-    //             // dispatch(remove())
-    //             props.history.push('/cart')
-    //         } else {
-    //             alert('Fail')
-    //         }
-    //     }
-    // }
+    const goToCart = () => {
+        if (check()) {
+            let newItem = {
+                slug: product.slug,
+                color: color,
+                size: size,
+                price: product.price,
+                quantity: quantity
+            }
+            if (dispatch(addItem(newItem))) {
+                dispatch(remove())
+                props.history.push('/cart')
+            } else {
+                alert('Fail')
+            }
+        }
+    }
 
     return (
         <div className="product">
@@ -185,8 +185,8 @@ const ProductView = props => {
                     </div>
                 </div>
                 <div className="product__info__item">
-                    <Button>thêm vào giỏ</Button>
-                    <Button>mua ngay</Button>
+                    <Button onClick={() => addToCart()}>thêm vào giỏ</Button>
+                    <Button onClick={() => goToCart()}>mua ngay</Button>
                 </div>
             </div>
             <div className={`product-description mobile ${descriptionExpand ? 'expand' : ''}`}>
